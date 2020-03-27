@@ -2,65 +2,81 @@ package traore.Exercice_4_1;
 
 import java.util.ArrayList;
 
-/*
- * Création de la classe AffichageParGroupe
+
+/**
+ * classe AffichageParGroupe
+ * @author traore-mousso
+ *
  */
 public class AffichageParGroupe {
 	
-	ArrayList<InterfacePersonnels>Arr=new ArrayList<InterfacePersonnels>();
+public ArrayList<InterfacePersonnels> grp=new ArrayList<InterfacePersonnels>();
 	
+/**
+ * Constructeur de la classe AffichageParGroupe  
+ * @param root
+ */
+	public  AffichageParGroupe (InterfacePersonnels root) {
+		this.grp.add(root);
+	}
 	
-	
-	/*
-	 * Création d'une classe GroupeIterator implémentant la classe Iterator
+	/**
+	 * Méthode groupIterator 
+	 * @author traore-mousso
+	 *
 	 */
-	private class GroupeIterator implements Iterator{
-		int index;
-		int verifie;
+	private class groupIterator implements Iterator{
+		int index=0;
 		
-		public boolean hasNext() {
-			if(index>=Arr.size()) {
-				return false;
+		
+		public groupIterator() {
+			int verifier=0;
+			while(verifier<grp.size()) {
+				if(grp.get(verifier) instanceof Composite) {
+					Composite test=(Composite)grp.get(verifier);
+					int i=0;
+					
+					while(i<test.grpPerso.size()) {
+						grp.add(test.grpPerso.get(i));
+						i++;
+					}
+					
+				
+				}
+				verifier++;
 			}
-			return true;
 		}
 		
-		
+	
+		/**
+		 * verifirie s'il y'a des elements dans la liste
+		 */
+		public boolean HasNext() {
+			if(index<grp.size())
+				return true;
+			return false;
+		}
 
 		public InterfacePersonnels Next() {
-			if(this.hasNext()) {
-			return Arr.get(index++);}
+			if(this.HasNext()) {
+				index++;
+				return grp.get(index-1);
+			}
+				
+			return null;
 		}
-		
-		/*
-		 * Méthode GroupeIterator
-		 */
-		
-		public void GroupeIterator(){
-			int verifie=0;
-			
-			
-			while (verifie<Arr.size()) {
-				if (Arr.get(verifie) instanceof Composite)
-				{
-					for (InterfacePersonnels ip : ((Composite)Arr.get(verifie)).GroupePersonnels)
-						{
-							Arr.add(ip);
-						}
-					
-				};
-			} verifie++;
-		}
-		
-		
 
+		public boolean hasNext() {
+			return false;
+		}
+		
+		
+		
+	}
 	
+	public Iterator getIterator() {
+		return new groupIterator();
+		
 	}
-	/*
-	 * Constructeur de la classe AffichageParGroupe
-	 */
-	AffichageParGroupe(InterfacePersonnels Root){
-		Arr.add(Root);
-	}
-
+	
 }
