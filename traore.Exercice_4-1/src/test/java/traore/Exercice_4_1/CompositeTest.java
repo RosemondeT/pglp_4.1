@@ -1,8 +1,14 @@
 package traore.Exercice_4_1;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
 
-public class CompositeTest extends TestCase {
-	
+import org.junit.Test;
+
+public class CompositeTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
 
 }
