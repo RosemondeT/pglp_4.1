@@ -1,101 +1,127 @@
 package traore.Exercice_4_1;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-
-/*
+import java.util.List;
+/**
+ * 
+ * @author traore-mousso
  * Création de la classe Personnels implémentant la classe InterfacePersonnels
+ *
  */
+
 public final class Personnels implements InterfacePersonnels{
-	private String Nom;
-	private String Prenom;
-	String Fonction;
-
-	LocalDate DateDeNaissance;
-	ArrayList<Integer>NumeroTel=new ArrayList<Integer>();
-
-	/*
-	 * Création de la classe Builder
+	/**
+	 * parametre obligatoire
+	 */
+	private final String nom;
+	private final String prenom;
+	private final int Id;//new
+	
+	/**
+	 * parametre optionel
+	 */
+	private final LocalDate dateDeNaissance;
+	private final ArrayList<Integer> numTel;
+	
+	
+	/**
+	 * Classe Builder
+	 * @author traore-mousso
+	 *
 	 */
 	
-	
-public class Builder{
-	
-	/*
-	 * Déclaration de variable
-	 */
-		/* parametre obligatoire*/
-		private String Nom;
-		private String Prenom;
-		/* parametre optionnel*/
-		
-		LocalDate DateDeNaissance;
-		ArrayList<Integer>NumeroTel=new ArrayList<Integer>();
-		
-		
-		/*
-		 * Creation du Constructeur de la classe Builder
+	public static class Builder{
+		/**
+		 * parametre obligatoire
 		 */
+		private final String nom;
+		private final String prenom;
+		private final int Id;//new
+		/**
+		 * parametre optionel
+		 */
+		private LocalDate dateDeNaissance;
+		private ArrayList<Integer> numTel;
 		
 		
-	    public Builder(String Nom, String Prenom){
-		this.Nom=Nom;
-		this.Prenom=Prenom; }
+		/**
+		 * Constructeur de la classe builder
+		 * @param nom
+		 * @param prenom
+		 * @param Id
+		 */
+		public Builder(String nom, String prenom, int Id) {
+			this.nom=nom;
+			this.prenom=prenom;
+			this.Id=Id;
 			
-	    
-	    /*
-	     * Création d'une méthode DateDeNaissance ayant trois paramètre
-	     */
-		public Builder DateDeNaissance(int annee, int mois, int jour) {
-		this.DateDeNaissance=LocalDate.of(annee, mois, jour);
-					return this;
-					
 		}
 		
-		
-		/*
-		 * Création d'une méthode NuméroTel ayant un paramètre
+		/**
+		 * Méthode dateDeNaissance
+		 * @param anne
+		 * @param mois
+		 * @param jour
+		 * @return
 		 */
-		
-		public Builder NumeroTel(int NumeroTel) {
-			this.NumeroTel.add(NumeroTel);
+		public Builder dateDeNaissance(int anne,int mois,int jour) {
+			this.dateDeNaissance= LocalDate.of(anne, mois, jour);
 			return this;
 			
 		}
 		
-		
-		/*
-		 * Création d'une méthode Personnels buid()
+		/**
+		 * Méthode numTel
+		 * @param numTel
+		 * @return
 		 */
-		public Personnels build() {
-			return new Personnels(this);
-			
-		}
+		public Builder numTel(int numTel) {
+			this.numTel.add(numTel);
+			return this;
+	}
 
+		public Personnels build() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+	}
+	
+	public Personnels build() {
+		return new Personnels(this);
+		
+	}
+	
+	
+
+
+private Personnels(Personnels personnels) {
+	//Obligatoire
+	this.nom=personnels.nom;
+	this.prenom=personnels.prenom;
+	this.Id=personnels.Id;//new
+	//optionel
+	this.dateDeNaissance=personnels.dateDeNaissance;
+	this.numTel=personnels.numTel;
+	
+}
+/**
+ * Affichage des informations du personnel
+ */
+public void print() {
+	// TODO Auto-generated method stub
+	System.out.println("l'identifiant du personnel :"+this.Id+" "+this.nom+" "+this.prenom);
 }
 
 
 
+public String toString(){
+	  String str = "\t je suis un Personnel ID ==>> " + this.Id;
+	  return str;
+}
 
 
-/*
- * Création du constructeur de la classe Personnels
- */
-	public Personnels(Builder builder) {
-		this.Nom=builder.Nom;
-		this.Prenom=builder.Prenom;
-		this.DateDeNaissance=builder.DateDeNaissance;
-		this.NumeroTel=builder.NumeroTel;
-		
-	}
-
-	
-	/*
-	 * Redefinition de la méthode Print()
-	 */
-	public void print() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	}
