@@ -25,9 +25,9 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2020</copyright>
     <item>
-      <title>File: 6,
+      <title>File: 5,
              Errors: 0,
-             Warnings: 451,
+             Warnings: 439,
              Infos: 0
       </title>
             <link>http://maven.apache.org/checkstyle.html</link>
@@ -81,20 +81,6 @@ under the License.
                 </td>
                 <td>
                   11
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://maven.apache.org/checkstyle.html#traore.Exercice_4_1.App.java">traore/Exercice_4_1/App.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  12
                 </td>
                 <td>
                   0
